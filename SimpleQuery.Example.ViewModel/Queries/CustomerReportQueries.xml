@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<queries>  
+  
+  <query name="All" defaultSort="Name">
+    <count>SELECT COUNT(*) FROM Customers</count>
+    <select>
+      SELECT
+      CustomerId,
+      ContactName AS Name,
+      Phone AS PhoneNumber
+      FROM Customers
+    </select>
+  </query>
+  
+  <query name="ById" defaultSort="Id">
+    <count>SELECT COUNT(*) FROM Customers WHERE CustomerID = @ID</count>
+    <select>
+      SELECT
+      CustomerId,
+      ContactName AS Name,
+      Phone AS PhoneNumber
+      FROM Customers
+      WHERE CustomerID = @ID
+    </select>
+  </query>
+  
+  <query name="ByCustomerName" defaultSort="Name">
+    <count>SELECT COUNT(*) FROM Customers WHERE ContactName = @Name</count>
+    <select>
+      SELECT
+      CustomerId,
+      ContactName AS Name,
+      Phone AS PhoneNumber
+      FROM Customers
+      WHERE ContactName = @Name
+    </select>
+  </query>
+</queries>
