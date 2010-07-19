@@ -7,7 +7,11 @@
       SELECT
       CustomerId,
       ContactName AS Name,
-      Phone AS PhoneNumber
+      Phone AS PhoneNumber,
+      Address AS [Address.Street],
+      City AS [Address.City],
+      Region AS [Address.Region],
+      PostalCode AS [Address.PostalCode]
       FROM Customers
     </select>
   </query>
@@ -18,7 +22,11 @@
       SELECT
       CustomerId,
       ContactName AS Name,
-      Phone AS PhoneNumber
+      Phone AS PhoneNumber,
+      Address AS [Address.Street],
+      City AS [Address.City],
+      Region AS [Address.Region],
+      PostalCode AS [Address.PostalCode]
       FROM Customers
       WHERE CustomerID = @ID
     </select>
@@ -30,7 +38,11 @@
       SELECT
       CustomerId,
       ContactName AS Name,
-      Phone AS PhoneNumber
+      Phone AS PhoneNumber,
+      Address AS [Address.Street],
+      City AS [Address.City],
+      Region AS [Address.Region],
+      PostalCode AS [Address.PostalCode]
       FROM Customers
       WHERE ContactName = @Name
     </select>
