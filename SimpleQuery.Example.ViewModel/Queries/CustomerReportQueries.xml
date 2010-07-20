@@ -23,7 +23,7 @@
       WHERE CustomerID = @ID
     </select>
     <parameters>
-      <parameter name="@ID" l="5" />
+      <parameter name="@ID" size="5" />
     </parameters>
   </query>
   

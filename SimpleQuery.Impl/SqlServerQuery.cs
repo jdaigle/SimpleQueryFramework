@@ -11,6 +11,7 @@ namespace SimpleQuery.Impl {
         private string selectQuery;
         private string defaultSort;
         private IDictionary<string, object> parameters;
+        private IDictionary<string, int> parameterSizes;
         private IPersistenceManager persistenceManager;
 
         private static readonly Regex ORDER_BY_REGEX = new Regex(@"\sorder\sby.*", RegexOptions.IgnoreCase);
@@ -20,11 +21,13 @@ namespace SimpleQuery.Impl {
                             string countQuery,
                             string selectQuery,
                             IDictionary<string, object> parameters,
+                            IDictionary<string, int> parameterSizes,
                             string defaultSort) {
             this.persistenceManager = persistenceManager;
             this.countQuery = countQuery;
             this.selectQuery = selectQuery;
             this.parameters = parameters;
+            this.parameterSizes = parameterSizes;
             this.defaultSort = defaultSort;
         }
 
@@ -101,6 +104,8 @@ namespace SimpleQuery.Impl {
                 foreach (KeyValuePair<string, object> kvp in parameters) {
                     var param = cmd.CreateParameter();
                     param.ParameterName = kvp.Key.StartsWith("@") ? kvp.Key : "@" + kvp.Key;
+                    if (parameterSizes.ContainsKey(kvp.Key))
+                        param.Size = parameterSizes[kvp.Key];
                     param.Value = kvp.Value;
                     cmd.Parameters.Add(param);
                 }

@@ -38,7 +38,7 @@ namespace SimpleQuery.Impl {
     public class ParameterInfo {
         [XmlAttribute("name")]
         public string Name { get; set; }
-        [XmlAttribute("length")]
-        public int Length { get; set; }
+        [XmlAttribute("size")]
+        public int Size { get; set; }
     }
 }

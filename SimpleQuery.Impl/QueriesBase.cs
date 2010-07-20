@@ -38,10 +38,18 @@ namespace SimpleQuery.Impl {
                 selectQuery = selectQuery.Replace("#basequery", baseQuery.SelectQuery.Trim());
             }
 
+            var parameterSizes = new Dictionary<string, int>();
+            if (query.Parameters != null && query.Parameters.ParameterInfo != null) {
+                foreach (var item in query.Parameters.ParameterInfo) {
+                    parameterSizes.Add(item.Name, item.Size);
+                }
+            }
+
             return new SqlServerQuery<T>(persistenceManager,
                 countQuery,
                 selectQuery,
                 parameters.ToDictionary(),
+                parameterSizes,
                 query.DefaultSort);
         }
 
