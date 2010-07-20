@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<queries>  
+<queries>
   
-  <query name="All" defaultSort="Name">
+  <query name="All">
     <count>SELECT COUNT(*) FROM Customers</count>
     <select>
       SELECT
@@ -16,20 +16,15 @@
     </select>
   </query>
   
-  <query name="ById" defaultSort="Id">
-    <count>SELECT COUNT(*) FROM Customers WHERE CustomerID = @ID</count>
+  <query name="ById" defaultSort="Id" basequery="All">
+    <count>#basequery WHERE CustomerID = @ID</count>
     <select>
-      SELECT
-      CustomerId,
-      ContactName AS Name,
-      Phone AS PhoneNumber,
-      Address AS [Address.Street],
-      City AS [Address.City],
-      Region AS [Address.Region],
-      PostalCode AS [Address.PostalCode]
-      FROM Customers
+      #basequery
       WHERE CustomerID = @ID
     </select>
+    <parameters>
+      <parameter name="@ID" l="5" />
+    </parameters>
   </query>
   
   <query name="ByCustomerName" defaultSort="Name">

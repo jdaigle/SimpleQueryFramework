@@ -11,11 +11,11 @@ namespace SimpleQuery.Example.Application {
 
 
             // Should all customers
-            var allCustomersCount = queries.All().Count();
-            var allCustomers = queries.All().Execute().ToArray();
-            var allSortedCustomers = queries.All().Execute("CustomerId", SortDirection.Desc).ToArray();
-            var someCustomers = queries.All().Execute(0, 20, "CustomerId", SortDirection.Desc).ToArray();
-            var someOtherCustomers = queries.All().Execute(20, 20, "CustomerId", SortDirection.Desc).ToArray();
+            //var allCustomersCount = queries.All().Count();
+            //var allCustomers = queries.All().Execute().ToArray();
+            //var allSortedCustomers = queries.All().Execute("CustomerId", SortDirection.Desc).ToArray();
+            //var someCustomers = queries.All().Execute(0, 20, "CustomerId", SortDirection.Desc).ToArray();
+            //var someOtherCustomers = queries.All().Execute(20, 20, "CustomerId", SortDirection.Desc).ToArray();
 
             // Should get a specific customer
             var theOneCustomerCount = queries.ById("BONAP").Count();
